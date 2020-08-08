@@ -118,7 +118,7 @@ app.get('/api/getemployees',findAllEmployees);
 
 app.get('/api/read/:item_id',readEmployeeByItem);
 
-app.put('/api/update/:item_id',updateEmployee); 
+app.put('/api/update/:item_id',updateEmployeeByItem); 
 
 app.get('/api/delete/:item_id',deleteEmployeeByItem); 
 
