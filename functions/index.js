@@ -66,7 +66,7 @@ let updateEmployeeByItem = (req, res) => {
     try {
         const document = db.collection('employees').doc(req.params.item_id);
         await document.update({
-            item: req.body.item
+            first_name: req.body.fname
         });
         return res.status(200).send();
     } catch (error) {
@@ -95,7 +95,7 @@ let createEmployeeByItem = (req, res) => {
     try {
         const document = db.collection('employees').doc();
         await document.set({
-            item: req.body.item
+            first_name: req.body.fname
         });
         return res.status(200).send();
     } catch (error) {
