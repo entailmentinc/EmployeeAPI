@@ -5,15 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"  href="/css/navstyle.css">
     <link rel="stylesheet"  href="/css/style.css">    
-    <title>Employee Admin | <%= title %> </title>
+    <title>Employee Admin | <%= data.title %> </title>
 </head>
 <body>
     <div class="main-nav">
     <h2>  All content will show here</h2>
+    <ul> 
+        <% data.hobbies.forEach((item)=>{%> 
+        <li><%=item%></li>  
+        <%});%> 
+    </ul> 
 
     </div>
     <div class="vertical"></div>
 
     <script src="/index.js"></script>
+
+
+    
 </body>
 </html> 

@@ -25,7 +25,10 @@ const cont  = new controller();
 
 // Load admin panel
 app.get('/',(request, response) =>{
-	response.render('index', { title: 'Employee Adminss Login' });
+	var data = {title:'Employee Admin Login', 
+    hobbies:['playing football', 'playing chess', 'cycling']}
+    response.render('index', {data:data}); 
+	// response.render('index', { title: 'Employee Admin Login' });
 });
 
 
