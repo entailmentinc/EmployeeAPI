@@ -1,33 +1,12 @@
-var admin = require("firebase-admin");
-
-const serviceAccount = require("../serviceAccountKey.json");
-
-const firebaseApp = admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://employeeapi-96cdc.firebaseio.com"
-  
-});
-
-const db = admin.firestore();
+const employeeService = require('../services/employeeService');
 
 var Controller = function(){};
+var empService = new employeeService();
 
 Controller.prototype.findAllEmployees = function(req, res) {
     (async () => {
         try {
-            let query = db.collection('employees');
-            let response = [];
-            await query.get().then(querySnapshot => {
-            let docs = querySnapshot.docs;
-            for (let doc of docs) {
-                const selectedItem = {
-                    email: doc.data().email,
-                    mobile_phone: doc.data().mobile_phone
-                };
-                response.push(selectedItem);
-            }
-            return null;
-            });
+            let response = empService.findAllEmployees();
             return res.status(200).send(response);
         } catch (error) {
             console.log(error);
@@ -40,9 +19,7 @@ Controller.prototype.findAllEmployees = function(req, res) {
   Controller.prototype.readEmployeeByItem = (req, res) => {
       (async () => {
           try {
-              const document = db.collection('employees').doc(req.params.item_id);
-              let item = await document.get();
-              let response = item.data();
+              let response = empService.readEmployeeByItem(req.params.item_id);
               return res.status(200).send(response);
           } catch (error) {
               console.log(error);

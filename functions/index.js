@@ -1,4 +1,4 @@
-const controller = require('./controllers/controllers');
+const employeeController = require('./controllers/employeeControllers');
 const functions = require('firebase-functions');
 const express = require('express');
 const cors = require('cors');
@@ -21,7 +21,7 @@ exports.app = functions.https.onRequest(app);
 
 //************************ API Mapping **********************************//
 
-const cont  = new controller();
+const empCtrl  = new employeeController();
 
 // Load admin panel
 app.get('/',(request, response) =>{
@@ -32,14 +32,14 @@ app.get('/',(request, response) =>{
 });
 
 
-app.get('/api/getemployees', (req, res) => { cont.findAllEmployees(req, res)});
+app.get('/api/getemployees', (req, res) => { empCtrl.findAllEmployees(req, res)});
 
-app.get('/api/read/:item_id', (req, res) => { cont.readEmployeeByItem()});
+app.get('/api/read/:item_id', (req, res) => { empCtrl.readEmployeeByItem()});
 
-app.put('/api/update/:item_id', (req, res) => { cont.updateEmployeeByItem()}); 
+app.put('/api/update/:item_id', (req, res) => { empCtrl.updateEmployeeByItem()}); 
 
-app.get('/api/delete/:item_id', (req, res) => { cont.deleteEmployeeByItem()}); 
+app.get('/api/delete/:item_id', (req, res) => { empCtrl.deleteEmployeeByItem()}); 
 
-app.post('/api/createEmployeeByItem', (req, res) => { cont.createEmployeeByItem()});
+app.post('/api/createEmployeeByItem', (req, res) => { empCtrl.createEmployeeByItem()});
 
 

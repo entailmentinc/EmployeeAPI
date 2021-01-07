@@ -6,14 +6,17 @@
     <link rel="stylesheet"  href="/css/navstyle.css">
     <link rel="stylesheet"  href="/css/style.css">    
     <title>Employee Admin | <%= data.title %> </title>
+     
 </head>
 <body>
     <div class="main-nav">
     <h2>  All content will show here</h2>
+    <% var myvar = "dks"; %> 
     <ul> 
         <% data.hobbies.forEach((item)=>{%> 
         <li><%=item%></li>  
         <%});%> 
+        <%= myvar %> 
     </ul> 
 
     </div>
