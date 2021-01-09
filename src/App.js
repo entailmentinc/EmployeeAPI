@@ -1,45 +1,46 @@
-// import logo from './logo.svg';
-// import './App.css';
+import React, { useState } from "react";
+// Handle console logs
+import "utils/dropConsole";
+// Styles
+import "fontsource-roboto";
+import logo from "./assets/images/logo.svg";
+import { SharedComp, ComplexShared } from "./components";
+// ROUTER
+import Home from "pages/Home";
+import { BrowserRouter } from "react-router-dom";
+import { RouterConfig } from "navigation/RouterConfig";
+// MUI Theme
+import { ThemeProvider, Button, createMuiTheme } from "@material-ui/core";
+// import theme from "styles/muiTheme";
+import { Typography } from "@material-ui/core";
+import { ThemeSwitch } from "components/ThemeSwitch";
+import { dark, light } from "styles/muiTheme";
+import "./App.css";
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
+function App() {
+  const [darkState, setDarkState] = useState(true);
+  const handleThemeChange = () => {
+    setDarkState(!darkState);
+    console.log("theme=", darkState ? "dark" : "light");
+  };
 
-// export default App;
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-
-import Login from "./containers/Login";
-
-export default function App() {
   return (
-    <Router>
-    <Switch>
-      <Route path="/login" component={Login} />
-    </Switch>
-    </Router>
+    <>
+      <div>
+        <ThemeProvider theme={darkState ? dark() : light()}>
+          <ThemeSwitch
+            darkState={darkState}
+            handleThemeChange={handleThemeChange}
+          />
+          <BrowserRouter>
+            <RouterConfig />
+          </BrowserRouter>
+        </ThemeProvider>
+      </div>
+
+
+    </>
   );
 }
 
+export default App;
