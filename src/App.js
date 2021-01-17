@@ -8,14 +8,14 @@ import "fontsource-roboto";
 // ROUTER
 // import Login from "pages/Login";
 import { BrowserRouter } from "react-router-dom";
-import { RouterConfig } from "navigation/RouterConfig";
+import { RouterConfig } from "./navigation/RouterConfig";
 // MUI Theme
 import { ThemeProvider, Button, createMuiTheme } from "@material-ui/core";
 // import theme from "styles/muiTheme";
 import { Typography } from "@material-ui/core";
 import { ThemeSwitch } from "./components/ThemeSwitch";
 import { dark, light } from "./styles/muiTheme";
-import "./App.css";
+// import "./App.css";
 
 function App() {
   const [darkState, setDarkState] = useState(true);
