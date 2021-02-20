@@ -3,26 +3,12 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 
 import rootReducer from './reducers'
+import users from './helpers/userStub.json'
 
 const initialState = {
   user: {
-    users: [
-      {
-          id: 1,
-          name: "Akon",
-          birth: "2021-01-19",
-          address: "jaipur",
-          isEdit: false,
-      },
-      {
-          id: 2,
-          name: "Dino",
-          birth: "2021-01-19",
-          address: "jaipur",
-          isEdit: false,
-      },
-      ],
-      user: null,
+    users,
+    user: null,
   },
   auth: false,
 }

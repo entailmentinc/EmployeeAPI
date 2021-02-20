@@ -37,15 +37,18 @@ function Users({ users }) {
       <Table className={classes.table} aria-label="simple table">
         <TableHead>
           <TableRow>
+            <TableCell>Id</TableCell>
+            <TableCell>Picture</TableCell>
             <TableCell>Name</TableCell>
+            <TableCell>Status</TableCell>
             <TableCell align="right">Date Of Birth</TableCell>
-            <TableCell align="right">Address</TableCell>
+            <TableCell align="right">Date Of Joining</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
         {users.map((user) => (
-                            <User user={user} key={user.id} />
-                        ))}
+            <User user={user} key={user.empId} />
+        ))}
         </TableBody>
       </Table>
     </TableContainer>
