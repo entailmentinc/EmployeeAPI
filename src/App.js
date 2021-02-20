@@ -1,46 +1,47 @@
-import React, { useState } from "react";
-// Handle console logs
-import "./utils/dropConsole";
-// Styles
-import "fontsource-roboto";
-// import logo from "./assets/images/heart.jpg";
-// import { SharedComp, ComplexShared } from "./components";
-// ROUTER
-// import Login from "pages/Login";
-import { BrowserRouter } from "react-router-dom";
-import { RouterConfig } from "./navigation/RouterConfig";
-// MUI Theme
-import { ThemeProvider, Button, createMuiTheme } from "@material-ui/core";
-// import theme from "styles/muiTheme";
-import { Typography } from "@material-ui/core";
-import { ThemeSwitch } from "./components/ThemeSwitch";
-import { dark, light } from "./styles/muiTheme";
-// import "./App.css";
+import './App.css';
+import Navbar from "./components/navbar/Navbar";
+import React from 'react'
+import Users from "./components/users/Users";
+import Login from "./components/login/Login";
+import { connect } from "react-redux";
+import AddUser from "./components/users/AddUser";
+import PrivateRoute from "./components/PrivateRoute"
+import {BrowserRouter as Router , Switch , Route} from "react-router-dom";
+import { setAuth } from './actions/login.action'
 
-function App() {
-  const [darkState, setDarkState] = useState(true);
-  const handleThemeChange = () => {
-    setDarkState(!darkState);
-    console.log("theme=", darkState ? "dark" : "light");
-  };
-
+function App({ setAuth }) {
+  React.useEffect(() => {
+    setAuth()
+  }, [])
   return (
-    <>
-      <div>
-        <ThemeProvider theme={darkState ? dark() : light()}>
-          <ThemeSwitch
-            darkState={darkState}
-            handleThemeChange={handleThemeChange}
-          />
-          <BrowserRouter>
-            <RouterConfig />
-          </BrowserRouter>
-        </ThemeProvider>
-      </div>
-
-
-    </>
+      <Router>
+        <div className="App">
+        <Switch>
+        <Route exact path="/"><Login/></Route>
+        <Route exact path="/login"><Login/></Route>
+        <Route path="/users">
+              <>
+              <Navbar />
+                <div className="container">
+                  <div className="py-3">
+                    <PrivateRoute>
+                      <Switch>
+                        <Route exact path="/users"><Users/></Route>
+                        <Route exact path="/users/add"><AddUser/></Route>
+                      </Switch>
+                    </PrivateRoute>
+                  </div>
+                </div>
+              </>
+            </Route>
+          </Switch>
+        </div>
+      </Router>
   );
 }
 
-export default App;
+const mapStateToProps = () => ({})
+
+export default connect(mapStateToProps, {
+  setAuth
+})(App)
