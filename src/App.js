@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from "./components/navbar/Navbar";
 import React from 'react'
-import Users from "./components/users/Users";
+import Users from "./components/users/Users1";
 import Login from "./components/login/Login";
 import { connect } from "react-redux";
 import AddUser from "./components/users/AddUser";
@@ -22,7 +22,7 @@ function App({ setAuth }) {
         <Route path="/users">
               <>
               <Navbar />
-                <div className="container">
+                <div className="container" style={{ margin: '50px' }}>
                   <div className="py-3">
                     <PrivateRoute>
                       <Switch>
