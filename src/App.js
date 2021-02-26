@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from "./components/navbar/Navbar";
 import React from 'react'
-import Users from "./components/users/Users1";
+import Users from "./components/users/Users";
 import Login from "./components/login/Login";
 import { connect } from "react-redux";
 import AddUser from "./components/users/AddUser";
@@ -21,16 +21,14 @@ function App({ setAuth }) {
         <Route exact path="/login"><Login/></Route>
         <Route path="/users">
               <>
-              <Navbar />
-                <div className="container" style={{ margin: '50px' }}>
-                  <div className="py-3">
+                <Navbar />
+                <div className="container">
                     <PrivateRoute>
                       <Switch>
                         <Route exact path="/users"><Users/></Route>
                         <Route exact path="/users/add"><AddUser/></Route>
                       </Switch>
                     </PrivateRoute>
-                  </div>
                 </div>
               </>
             </Route>

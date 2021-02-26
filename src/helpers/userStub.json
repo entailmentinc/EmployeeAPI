@@ -33,7 +33,7 @@
       "isActive": true,
       "lastName": "Rathore",
       "picture": "https://firebasestorage.googleapis.com/v0/b/employeedirectory-b5195.appspot.com/o/IT_039.jpg?alt=media&token=d66e81ab-753b-4e36-b7e7-736aa156d649",
-      "empId": "IT-039"
+      "empId": "IT-049"
     },
     {
       "firstName": "Jay",
@@ -111,7 +111,7 @@
       "firstName": "Hemendra",
       "dob": "1998-04-05T00:00:00.000Z",
       "doj": "2020-04-22T09:28:24.326Z",
-      "isActive": true,
+      "isActive": false,
       "lastName": "Badiyar",
       "picture": "https://firebasestorage.googleapis.com/v0/b/employeedirectory-b5195.appspot.com/o/IT_052.jpg?alt=media&token=7c1a6c81-702b-43d8-9621-02d795b36567",
       "empId": "IT-052"
@@ -120,7 +120,7 @@
       "firstName": "Sahadev",
       "dob": "1992-07-02T00:00:00.000Z",
       "doj": "2018-04-03T00:00:00.000Z",
-      "isActive": true,
+      "isActive": false,
       "lastName": "Jewliya",
       "picture": "https://firebasestorage.googleapis.com/v0/b/employeedirectory-b5195.appspot.com/o/IT_038.jpg?alt=media&token=c85066a3-c76d-4105-b5b8-47313ffb5bc2",
       "empId": "IT-038"
