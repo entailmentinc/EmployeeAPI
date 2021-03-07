@@ -48,7 +48,7 @@ function Users({ users }) {
   return (
   <>
     <div className="d-flex justify-content-between align-items-center">
-			<h1>Sarvika Employee Directory</h1>
+			<h1>Employee Directory</h1>
 			<div className="d-flex heading-right align-items-center">
 			  <div>
 					<b>Total Records: ({users.length})</b>
