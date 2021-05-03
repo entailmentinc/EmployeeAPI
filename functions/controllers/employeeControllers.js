@@ -1,13 +1,41 @@
-const employeeService = require('../services/employeeService');
+// const employeeService = require('../services/employeeService');
 
 var Controller = function(){};
-var empService = new employeeService();
+// var empService = new employeeService();
+
+var admin = require("firebase-admin");
+
+const serviceAccount = require("../serviceAccountKey.json");
+
+const firebaseApp = admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://employeeapi-96cdc.firebaseio.com"
+  
+});
+
+const db = admin.firestore();
 
 Controller.prototype.findAllEmployees = function(req, res) {
     (async () => {
+        // const docRef = db.collection('employees').doc();
+        // docRef.get().then(function(doc) {
+        //     if (doc.exists) {
+        //         console.log("KHANDAL -----");
+        //         console.log(doc);
+        //     } else {
+        //       //user does not exist..
+        //     }
+        //   })
         try {
-            let response = empService.findAllEmployees();
-            return res.status(200).send(response);
+
+            var empArray = [];
+            const employeesRef = db.collection('employees');
+            const snapshot = await employeesRef.get();
+            snapshot.forEach(doc => {
+            // console.log(doc.id, '=>', doc.data());
+                empArray.push(doc.data());
+            });
+            return res.status(200).send(empArray);
         } catch (error) {
             console.log(error);
             return res.status(500).send(error);
@@ -19,7 +47,10 @@ Controller.prototype.findAllEmployees = function(req, res) {
   Controller.prototype.readEmployeeByItem = (req, res) => {
       (async () => {
           try {
-              let response = empService.readEmployeeByItem(req.params.item_id);
+            //   let response = empService.readEmployeeByItem(req.params.item_id);
+              const document = db.collection('employees').doc(req.params.item_id);
+              let item = await document.get();
+              let response = item.data();
               return res.status(200).send(response);
           } catch (error) {
               console.log(error);

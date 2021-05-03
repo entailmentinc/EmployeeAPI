@@ -14,7 +14,8 @@ app.get('/api-test', (req, res) => {
 });
 
 let listener = app.listen(process.env.PORT, () => {
-  console.log('Your app is listening on port ' + listener.address().port);
+  console.log('Your app is listening on port ' + Number(listener.address().port));
+  functions.logger.log("New - Your app is listening on port", + Number(listener.address().port))
 });
 
 exports.app = functions.https.onRequest(app);
@@ -34,12 +35,12 @@ app.get('/',(request, response) =>{
 
 app.get('/api/getemployees', (req, res) => { empCtrl.findAllEmployees(req, res)});
 
-app.get('/api/read/:item_id', (req, res) => { empCtrl.readEmployeeByItem()});
+app.get('/api/read/:item_id', (req, res) => { empCtrl.readEmployeeByItem(req, res)});
 
-app.put('/api/update/:item_id', (req, res) => { empCtrl.updateEmployeeByItem()}); 
+app.put('/api/update/:item_id', (req, res) => { empCtrl.updateEmployeeByItem(req, res)}); 
 
-app.get('/api/delete/:item_id', (req, res) => { empCtrl.deleteEmployeeByItem()}); 
+app.get('/api/delete/:item_id', (req, res) => { empCtrl.deleteEmployeeByItem(req, res)}); 
 
-app.post('/api/createEmployeeByItem', (req, res) => { empCtrl.createEmployeeByItem()});
+app.post('/api/createEmployeeByItem', (req, res) => { empCtrl.createEmployeeByItem(req, res)});
 
 
