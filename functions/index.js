@@ -13,9 +13,9 @@ app.get('/api-test', (req, res) => {
   return res.status(200).send('Run Successfully!');
 });
 
-let listener = app.listen(process.env.PORT, () => {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+//let listener = app.listen(process.env.PORT, () => {
+//  console.log('Your app is listening on port ' + listener.address().port);
+//});
 
 exports.app = functions.https.onRequest(app);
 
